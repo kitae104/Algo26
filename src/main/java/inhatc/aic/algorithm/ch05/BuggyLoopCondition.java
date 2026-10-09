@@ -11,7 +11,7 @@ public class BuggyLoopCondition {
         int foundIndex = -1;
 
         // 범위가 남아 있는 동안 절반씩 버리며 찾는다 (…라고 생각했다)
-        while (low < high) {
+        while (low <= high) {
             int mid = low + (high - low) / 2;
             if (bookNumbers[mid] == target) {
                 foundIndex = mid;

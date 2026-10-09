@@ -1,9 +1,13 @@
 package inhatc.aic.algorithm.ch05;
 
+import java.util.Arrays;
+
 public class BuggyUnsortedSearch {
     public static void main(String[] args) {
         // 반납된 순서 그대로라 아직 정렬되지 않은 도서 번호
         int[] bookNumbers = {3106, 1001, 2754, 5090, 1203, 4213};
+//        Arrays.sort(bookNumbers);
+//        System.out.println("정렬된 도서 번호: " + Arrays.toString(bookNumbers));
         int target = 1001;   // 인덱스 1에 분명히 있다
 
         int low = 0;
