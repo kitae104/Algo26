@@ -119,5 +119,17 @@ public class SortingThreeComplete {
 
         System.out.println("관찰: 비교 횟수의 '모양'은 세 정렬 모두 O(n^2)이지만,");
         System.out.println("      이미 정렬된 입력에서 버블(조기 종료)과 삽입은 n-1번 비교로 끝난다.");
+
+        //==============================
+        int[] data = {26, 15, 38, 12, 21, 30, 8, 19};
+
+        int[] sortedData = Arrays.stream(data)
+                .boxed()
+                .sorted((a, b) -> Integer.compare(a, b))
+                .mapToInt(Integer::intValue)
+                .toArray();
+
+        System.out.println("정렬 전 : " + Arrays.toString(data));
+        System.out.println("정렬 후 : " + Arrays.toString(sortedData));
     }
 }
