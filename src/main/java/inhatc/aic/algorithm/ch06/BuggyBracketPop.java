@@ -1,12 +1,9 @@
 package inhatc.aic.algorithm.ch06;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class BuggyBracketPop {
-
-    static char[] stack = new char[100];
-    static int top = -1;
-
-    static void push(char value) { stack[++top] = value; }
-    static char pop() { return stack[top--]; }
 
     /** 여는 괄호 open과 닫는 괄호 close가 서로 짝인지 확인한다 */
     static boolean isPair(char open, char close) {
@@ -16,21 +13,18 @@ public class BuggyBracketPop {
     }
 
     static boolean isValid(String text) {
-        top = -1;
+        Deque<Character> stack = new ArrayDeque<>();
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             if (ch == '(' || ch == '[' || ch == '{') {
-                push(ch);
+                stack.push(ch);
             } else if (ch == ')' || ch == ']' || ch == '}') {
-//                if (top == -1) {          // 빈 스택 검사가 pop보다 먼저!
-//                    return false;         // 짝 없는 닫는 괄호 → 무효
-//                }
-                if (!isPair(pop(), ch)) {   // 닫는 괄호: 바로 pop해서 비교한다
+                if (!isPair(stack.pop(), ch)) {
                     return false;
                 }
             }
         }
-        return top == -1;
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {
